@@ -3,11 +3,25 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 
-fn sort<T>(array: &mut [T]){
+fn sort<T>(array: &mut [T])
+where 
+    T: Ord + Copy
+{
 	//TODO
+    for i in 1..array.len() {
+        let key = array[i];
+        let mut j = i;
+
+        while j > 0 && array[j - 1] > key {
+            array[j] = array[j - 1];
+            j -= 1;
+        }
+
+        array[j] = key;
+    }
 }
+
 #[cfg(test)]
 mod tests {
     use super::*;
